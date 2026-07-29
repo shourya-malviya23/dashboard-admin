@@ -10,7 +10,7 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
-function Header() {
+function Header({ sidebarCollapsed , onToggleSidebar}) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const applyTheme = (isDark) => {
@@ -51,7 +51,7 @@ function Header() {
       <div className="flex items-center justify-between">
         {/* left items */}
         <div className="flex items-center space-x-3">
-          <button className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+          <button className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" onClick = {onToggleSidebar}>
             <Menu className="w-5 h-5" />
           </button>
           <div className="flex-1 max-w-md mx-9">

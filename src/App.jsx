@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import Sidebar from "./Components/Layouts/Sidebar";
 import Header from "./Components/Layouts/Header";
+import Dashboard from "./pages/Dashboard";
+
 
 function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = React.useState(false);
@@ -16,7 +18,13 @@ function App() {
           onChangePages={setCurrentPage}
         />
         <div className="flex flex-1 flex-col overflow-hidden">
-          <Header />
+          <Header  sidebarCollapsed = {sidebarCollapsed} onToggleSidebar = {() => setSidebarCollapsed(!sidebarCollapsed)}/>
+
+        <main className="flex-1 overflow-y auto bg-transparent">
+          <div className="p-5 space-y-5 ">
+            {currentPage === "dashboard" && <Dashboard />}
+          </div>
+        </main>
         </div>
       </div>
     </div>
