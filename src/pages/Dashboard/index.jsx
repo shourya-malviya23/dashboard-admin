@@ -26,14 +26,14 @@ function Dashboard() {
         {/* StatCard*/}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
           <StatCard title = "Total Sales"
-                    value = "$12,450.00"
+                    value = "$1,450.00"
                     trend = "+14.2%"
                     trendType = "up"
                     Icon = {ShoppingBag}
                     neonColor = "cyan"
           />
           <StatCard title = "Total Users"
-                    value = "$1,250"
+                    value = "324"
                     trend = "+5.1%"
                     trendType = "up"
                     Icon = {Users}

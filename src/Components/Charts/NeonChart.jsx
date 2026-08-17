@@ -30,8 +30,24 @@ function NeonChart() {
                     <defs>
                         <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="5%" stopColor='#22d3ee' stopOpacity={0.3} />
+                            <stop offset ="95%" stopColor="#22d3ee" stopOpacity={0} />
                         </linearGradient>
                     </defs>
+
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#334155" opacity={0.1}/>
+                    <XAxis dataKey = "name" axisLine={false} tickLine = {false} tick = {{fill: "#94a3b8", fontSize: 12 }}/>
+                    <YAxis hide />
+                    <Tooltip contentStyle={{backgroundColor: "#f172a", border: '1px solid #22d3ee', borderRadius: "12px", color: "#fff"}}
+                    itemStyle={{color: "#22d3ee"}}/> 
+                    <Area 
+                        type = "monotone"
+                        dataKey="sales"
+                        stroke="#22d3ee"
+                        strokeWidth={4} 
+                        fillOpacity={1}
+                        fill="url(#colorSales)"
+                        dot={{r:4, fill:"#22d3ee", strokeWidth:2, stroke:"#0f172a"}}
+                    />
                 </AreaChart>
             </ResponsiveContainer>
         </div>

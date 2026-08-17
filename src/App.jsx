@@ -20,7 +20,7 @@ function App() {
         <div className="flex flex-1 flex-col overflow-hidden">
           <Header  sidebarCollapsed = {sidebarCollapsed} onToggleSidebar = {() => setSidebarCollapsed(!sidebarCollapsed)}/>
 
-        <main className="flex-1 overflow-y auto bg-transparent">
+        <main className="flex-1 overflow-y-auto bg-transparent">
           <div className="p-5 space-y-5 ">
             {currentPage === "dashboard" && <Dashboard />}
           </div>
