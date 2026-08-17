@@ -2,6 +2,7 @@ import { ArrowUpRight, BarChart3, ShoppingBag, Users, Zap } from 'lucide-react'
 import React from 'react'
 import StatCard from '../../Components/Card/StatCard'
 import NeonChart from '../../Components/Charts/NeonChart'
+import GlobalTable from '../../Components/Tables'
 
 function Dashboard() {
   return (
@@ -59,9 +60,22 @@ function Dashboard() {
           <div className="lg:col-span-2">
             <NeonChart />
           </div>
+          <div className= 'bg-linear-to-r from-indigo-600 via-purple-600 to-fuchsia-600 rounded-3xl p-8 text-white relative overflow-hidden group shadow-xl'>
+            <div className="relative z-10 h-full flex flex-col justify-between">
+              <div>
+                <h3>System Healthy <br/>Optimal</h3>
+                <p className="text-indigo-100 mt-3 opacity-90 text-sm">Your revenue is up by 30% compared to last week.</p>
+              </div>
+              <button className="mt-10 bg-white text-indigo-700 font-bold px-6 py-3 rounded-xl hover:bg-opacity-90 transition-all text-sm uppercase tracking-widest">
+                Detailed Report
+              </button>
+            </div>
+            <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-3xl group-hover:scale-110 transition-all duration-700">
+            </div>
+          </div>
         </div>
         {/* User Table*/}
-
+        <GlobalTable />
       </div>
     </div>
   )
