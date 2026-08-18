@@ -5,6 +5,12 @@ import NeonChart from '../../Components/Charts/NeonChart'
 import GlobalTable from '../../Components/Tables'
 
 function Dashboard() {
+  const dataUser = [
+    {name: "Yiorgos Avraamu", status:"New Member", avatar: "https://i.pravatar.cc/150?u=1", flag: "US", usage: 50, activity: "Active Now"},
+    {name: "Avram Tarasios", status:"Recurring Member", avatar: "https://i.pravatar.cc/150?u=2", flag: "BR", usage: 10, activity: "5 min ago"},
+    {name: "Quintin Ed", status:"Enterprise User", avatar: "https://i.pravatar.cc/150?u=3", flag: "IN", usage: 74, activity: "1 hour ago"}
+
+  ]
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#020617] p-4 md:p-10 transition-colors duration-500">
       <div className="max-w-7xl mx-auto space-y-10">
@@ -75,7 +81,7 @@ function Dashboard() {
           </div>
         </div>
         {/* User Table*/}
-        <GlobalTable />
+        <GlobalTable users = {dataUser}/>
       </div>
     </div>
   )
