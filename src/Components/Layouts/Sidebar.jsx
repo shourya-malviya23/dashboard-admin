@@ -12,6 +12,7 @@ import {
   Settings,
   Users,
 } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 const menuItems = [
   {
@@ -125,61 +126,52 @@ function Sidebar({ collapsed, onToggle, currentPage, onChangePages }) {
       </div>
 
       {/* Nav menu in sidebar */}
-      <nav className="flex-1 p-3 space-y-2 overflow-auto">
+      <nav className="flex-1 p-3 space-y-2 overflow-y-auto overflow-x-hidden custom-scrollbar">
         {menuItems.map((item) => {
-          return (
-            <div key={item.id}>
-              <button
-                className={`flex items-center justify-between p-3 rounded-xl transition-all duration-200 ${collapsed ? "" : "w-full"}
-                  ${currentPage === item.id || item.active ? "bg-linear-to-r from-blue-400 via-purple-600 to-fuchsia-600 text-white shadow-lg shadow-orange-500/25" : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50 "}`}
-                onClick={() => {
-                  if (item.submenu) {
-                    toggleExp(item.id);
-                  } else {
-                    onChangePages(item.id);
-                  }
-                }}
-              >
-                <div className="flex items-center justify-center space-x-2">
-                  <item.icon className="w-5 h-5 text-black dark:text-white text-center  " />
+          const hasSubmenu = !!item.submenu;
+          const Icon = item.icon;
+          return(
+            <div key = {item.id}>
+              {hasSubmenu ? (
+                <button onClick = {() => toggleExp(item.id)} className={`flex items-center justify-between p-3 rounded-full transition-all duration-200 w-full 
+                ${expendedItems.has(item.id)
+                  ?"text-cyan-500 bg-slate-100/50 dark:bg-slate-800/50"
+                  :"text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50"
+                }
+                `}>
+                  <div className="flex items-center space-x-3">
+                    <Icon className="w-5 h-5 flex-shrink-0" />
+                    {!collapsed && <span className="font-medium whitespace-nowrap">{item.label}</span>}
+                  </div>
                   {!collapsed && (
-                    <>
-                      <span className="font-medium ml-2 text-black dark:text-slate-200">
-                        {" "}
-                        {item.label}{" "}
-                      </span>
-                      {/* Badge items */}
-                      {item.badge && (
-                        <span className="px-1 py-1 text-xs bg-red-400 text-white rounded-full ">
-                          {" "}
-                          {item.badge}{" "}
-                        </span>
-                      )}
-                  {/* Count items */}
-                  {item.count && (
-                    <span className="px-1 py-1 text-xs bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full ">
-                      {item.count}
-                    </span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${expendedItems.has(item.id) ? "rotate-180" : ""}`} />
                   )}
+                </button>
+              ) : (
+                <NavLink
+                 to={`/${item.id}`}
+                 className={({isActive}) => `*
+                 flex items-center justify-between p-3 rounded-xl transition-all duration-200 w-full
+                 ${isActive
+                  ? "bg-linear-to-r from-blue-500 via-purple-600 to-fuchsia-600 text-white shadow-lg shadow-purple-500/25"
+                  : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/50 "
+                 } 
+                 `}
+                 >
+                  <div className="flex items-center space-x-3">
+                    <Icon className="w-5 h-5 flex-shrink-0" />
+                    {!collapsed &&
+                    <> 
+                    <span className="font-medium whitespace-nowrap">{item.label}</span>
+                    {item.badge && <span className= "px-1.5 py-0.5 text-[10px] bg-red-500 text-white rounded-full animate-pulse ml-auto">{item.badge}</span>}
+                    {item.count && <span className= "px-1.5 py-0.5 text-[10px] bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full ml-auto">{item.count}</span>}
                     </>
-                  )}
-
-                </div>
-                {!collapsed && item.submenu && (
-                  <ChevronDown className="w-4 h-4 transition-transform" />
-                )}
-              </button>
-                  
-              {/* Submenu items */}
-              {!collapsed && item.submenu && expendedItems.has(item.id) && (
-                <div className="mt-2 ml-8 space-x-1.5">
-                  {item.submenu.map((itemsub) => {
-                    return <button className="w-full text-left p-2 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 rounded-lg transition-all">{itemsub.label}</button>;
-                  })}
-                </div>
+                    }
+                  </div>
+                </NavLink>
               )}
             </div>
-          );
+          )
         })}
       </nav>
     </div>
