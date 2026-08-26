@@ -170,6 +170,26 @@ function Sidebar({ collapsed, onToggle, currentPage, onChangePages }) {
                   </div>
                 </NavLink>
               )}
+
+              {!collapsed && hasSubmenu && expendedItems.has(item.id) && (
+                <div className="mt-2 ml-6 pl-4 border-l border-slate-200 dark:border-slate-800 space-y-1">
+                  {item.submenu.map((sub) => (
+                    <NavLink key = {sub.id}
+                      to={`/${item.id}/${sub.id}`}
+                      className={({isActive}) => `
+                        block p-2 text-left rounded-lg transition-all w-full
+                        ${
+                          isActive
+                            ? "text-blue-500 font-bold bg-cyan-500/50"
+                            : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/50"
+                        }
+                      `}
+                      >
+                        {sub.label}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
             </div>
           )
         })}
