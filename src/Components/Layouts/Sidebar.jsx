@@ -29,7 +29,7 @@ const menuItems = [
     label: "Analytics",
     submenu: [
       { id: "overview", label: "Overview" },
-      { id: "report", label: "Report" },
+      { id: "reports", label: "Report" },
     ],
   },
 

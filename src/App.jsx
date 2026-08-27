@@ -4,6 +4,7 @@ import Sidebar from "./Components/Layouts/Sidebar";
 import Header from "./Components/Layouts/Header";
 import Dashboard from "./pages/Dashboard";
 import Overview from "./pages/Analytics/overview"
+import Reports from "./pages/Analytics/reports"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 
@@ -28,6 +29,7 @@ function App() {
             <Routes>
               <Route path = "/" element={<Dashboard/>}/>
               <Route path = "/analytics/overview" element={<Overview/>}/>
+              <Route path = "/analytics/reports" element={<Reports/>}/>    
               <Route path = "*" element={<Dashboard/>}/>
 
             </Routes>
