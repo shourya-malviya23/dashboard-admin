@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Overview from "./pages/Analytics/overview"
 import Reports from "./pages/Analytics/reports"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Calender from "./pages/Calender";
 
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
             <Routes>
               <Route path = "/" element={<Dashboard/>}/>
               <Route path = "/analytics/overview" element={<Overview/>}/>
-              <Route path = "/analytics/reports" element={<Reports/>}/>    
+              <Route path = "/analytics/reports" element={<Reports/>}/>
+              <Route path = "/calender" element={<Calender/>}/>     
               <Route path = "*" element={<Dashboard/>}/>
 
             </Routes>

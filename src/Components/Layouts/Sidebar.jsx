@@ -34,9 +34,9 @@ const menuItems = [
   },
 
   {
-    id: "calendar",
+    id: "calender",
     icon: Calendar,
-    label: "Calendar",
+    label: "Calender",
   },
 
   {

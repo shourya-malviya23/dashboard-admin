@@ -1,4 +1,4 @@
-import { ChevronRight, Download, FileBarChart, FileSpreadsheet, Filter, Plus, Search } from 'lucide-react'
+import { CheckCircle2, ChevronRight, Clock, Download, FileBarChart, FileSpreadsheet, Filter, MoreHorizontal, Plus, Search, Share2 } from 'lucide-react'
 import React from 'react'
 
 function Reports() {
@@ -127,10 +127,55 @@ function Reports() {
                                         </div>
                                     </div>
                                 </td>
+                                <td className="px-6 py-4">
+                                    {report.status === "completed" ? (
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 text-[11px] font-bold"><CheckCircle2 size={12}/> Ready</span>  
+                                    ) : (
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-600 dark:bg-amber-500/10 text-[11px] font-bold"><Clock size={12} /> Processing</span>
+                                    )
+
+                                    }
+                                </td>
+
+                                <td className="px-6 py-4 text-sm text-slate-600 dark:text-slate-400 font-medium">
+                                   {report.author}
+                                   <div className="text-[10px] text-slate-400 font-normal">{report.date}</div> 
+                                </td>
+
+                                <td className="px-6 py-4 text-sm text-slate-400 font-mono">
+                                    {report.size}
+                                </td>
+                                <td className="px-6 py-4">
+                                    <div className="flex items-center justify-end gap-1">
+                                        <button className="p-2 text-slate-400 hover:text-blue-500 hover:bg-blue-50 dark:hover-bg-blue-500/10 rounded-lg transition-all">
+                                            <Download size={18}/>
+                                        </button>
+                                        <button className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover-bg-slate-200 rounded-lg transition-all">
+                                            <Share2 size={18} />
+                                        </button>
+                                        <button className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 darh:hover:bg-slate-800 rounded-lg transition-all">
+                                            <MoreHorizontal size={18} />
+                                        </button>
+                                    </div>
+                                </td>
                               </tr>  
                             ))}
                         </tbody>
                     </table>
+                </div>
+
+                {/* Pagination */}
+                <div className='p-4 bg-slate-50/30 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500'>
+                <p >Showing 1-4 of 45 reports </p>
+                <div className='flex gap-1'>
+                    <button className='px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-white dark:hover:bg-slate-800 transition-colors'>Prev</button>
+                    <button className='px-3 py-1.5 bg-blue-600 text-white rounded-lg font-bold'>1</button>
+                    <button 
+                    className='px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-white dark:hover:bg-slate-800 transition-colors'>2</button>
+                    <button 
+                    className='px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-white dark:hover:bg-slate-800 transition-colors'
+                    >Next</button>
+                </div>
                 </div>
             </div>
         </div>
