@@ -1,10 +1,15 @@
-import { CalculatorIcon, ChevronLeft, ChevronRight, Plus } from 'lucide-react'
+import { CalculatorIcon, ChevronLeft, ChevronRight, Clock, MoreHorizontal, Plus } from 'lucide-react'
 import React from 'react'
 
 function Calender() {
 
   const days=['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
   const calenderDays=Array.from({length:31},(_, i) => i + 1);
+  const events = [
+  { time: '10:00 AM', title: 'Design Review', type: 'Work', attendees: 3, color: 'bg-purple-500' },
+  { time: '01:30 PM', title: 'Client Review', type: 'Marketing', attendees: 5, color: 'bg-blue-500' },
+  { time: '04:00 PM', title: 'Project Review', type: 'Development', attendees: 2, color: 'bg-pink-500' },
+]
   return (
     <div className='p-6 bg-slate-50 dark:bg-slate-950 min-h-screen space-y-6'>
 
@@ -61,8 +66,52 @@ function Calender() {
               </div>
             ))}
           </div>
-
         </div>
+
+         {/* Daily Events & Tasks (Bento Box) */}
+          <div className='space-y-6'>
+            {/* Today's Overview */}
+            <div className='bg-linear-to-br from-indigo-600 to-purple-700 rounded-[2.5rem] p-8 text-white shadow-xl shadow-indigo-500/30 '>
+                <h3 className='text-lg font-bold mb-1'>Today's Overview</h3>
+                <p className='text-indigo-100 text-sm opacity-80 mb-6'>Saturday, 17 Jan 2026</p>
+                <div className='space-y-4'>
+                  <div className='bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10'>
+                    <div className='flex justify-between items-center'>
+                      <span className='text-xs font-bold uppercase opacity-60'>Completed Tasks</span>
+                      <span className='text-2xl font-black'>85%</span>
+                    </div>
+                    <div className='w-full bg-white/20 h-1.5 rounded-full mt-2'>
+                      <div className='bg-white h-full rounded-full w-[85%]'></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+              {/* Upcoming Events List */}
+              <div className='bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none overflow-hidden relative'>
+                <div className='flex justify-between items-center mb-6'>
+                  <h3 className='font-black text-slate-800 dark:text-white text-lg tracking-tight'>UPCOMING</h3>
+                  <button className='text-slate-400 hover:text-slate-600 transition-colors'><MoreHorizontal /></button>
+                </div>
+
+                <div className='space-y-6'>
+                  {events.map((event, index) => (
+                    <div key={index} className='flex gap-4 group'>
+                      <div className='flex flex-col items-center'>
+                        <div className={`w-3 h-3 rounded-full ${event.color} ring-4 ring-slate-100 dark:ring-slate-800 group-hover:scale-125 transition-transform`}></div>
+                        <div className='w-[2px] h-full bg-slate-100 dark:bg-slate-800 mt-2'></div>
+                      </div>
+                      <div className='flex-1 pb-6'>
+                        <div className='flex items-center gap-2 text-slate-400 text-xs font-bold mb-1 uppercase tracking-tighter'>
+                          <Clock size={12} />{event.time}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
+          </div>
       </div>
 
     </div>
