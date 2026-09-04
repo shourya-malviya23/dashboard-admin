@@ -7,6 +7,9 @@ import Overview from "./pages/Analytics/overview"
 import Reports from "./pages/Analytics/reports"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Calender from "./pages/Calender";
+import Admins from "./pages/Admins"; 
+import Employees from "./pages/Employees"; 
+import Members from "./pages/Members";  
 
 
 function App() {
@@ -31,8 +34,12 @@ function App() {
               <Route path = "/" element={<Dashboard/>}/>
               <Route path = "/analytics/overview" element={<Overview/>}/>
               <Route path = "/analytics/reports" element={<Reports/>}/>
-              <Route path = "/calender" element={<Calender/>}/>     
+              <Route path = "/calender" element={<Calender/>}/> 
+              <Route path="/users/employee" element={<Employees/>}/>    
               <Route path = "*" element={<Dashboard/>}/>
+              <Route path="/users/admins" element={<Admins/>}/>
+              <Route path="/users/members" element={<Members/>}/>
+              <Route path="/report" element={<Reports/>}/> 
 
             </Routes>
           </div>

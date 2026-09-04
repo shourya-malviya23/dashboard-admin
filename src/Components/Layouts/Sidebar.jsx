@@ -47,7 +47,7 @@ const menuItems = [
     submenu: [
       { id: "employee", label: "Employee" },
       { id: "admins", label: "Admins" },
-      { id: "users", label: "Users" },
+      { id: "members", label: "Members" },
     ],
   },
 

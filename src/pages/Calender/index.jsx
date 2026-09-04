@@ -105,10 +105,27 @@ function Calender() {
                         <div className='flex items-center gap-2 text-slate-400 text-xs font-bold mb-1 uppercase tracking-tighter'>
                           <Clock size={12} />{event.time}
                         </div>
+                        <h4 className='font-bold text-slate-800 dark:text-white text-sm'>{event.title}</h4>
+                        <div className='flex items-center gap-3 mt-2'>
+                          <div className='flex space-x-2'>
+                            {[1, 2, 3].map(i => (
+                              <div 
+                                key={i} 
+                                className='w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 border-2 border-white dark:border-slate-900 text-[10px] flex items-center justify-center font-bold'
+                              >U
+                              </div>
+                            ))}
+                          </div>
+                          <span className="text-[10px] text-slate-400 font-black">{event.attendees}</span>
+                        </div>
+
                       </div>
                     </div>
                   ))}
                 </div>
+
+                <button className="w-full mt-4 py-3 bg-slate-50 dark:bg-slate-800/50 rounded-2xl text-xs font-black text-slate-400 hover:text-indigi-600 transition-all uppercase tracking-widest">
+                View All Events</button>
 
               </div>
           </div>
