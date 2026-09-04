@@ -10,6 +10,9 @@ import Calender from "./pages/Calender";
 import Admins from "./pages/Admins"; 
 import Employees from "./pages/Employees"; 
 import Members from "./pages/Members";  
+import Tasks from "./pages/Tasks";
+import Messages from "./pages/Messages";
+import Notifications from "./pages/Notifications";
 
 
 function App() {
@@ -39,7 +42,10 @@ function App() {
               <Route path = "*" element={<Dashboard/>}/>
               <Route path="/users/admins" element={<Admins/>}/>
               <Route path="/users/members" element={<Members/>}/>
-              <Route path="/report" element={<Reports/>}/> 
+              <Route path="/report" element={<Reports/>}/>
+              <Route path="/tasks" element={<Tasks/>}/>  
+              <Route path="/messages" element={<Messages/>}/>
+              <Route path="/notifications" element={<Notifications/>}/>
 
             </Routes>
           </div>
